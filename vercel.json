@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "vercel-community/php@latest"
+    }
+  },
+  "routes": [
+    { "src": "/(.*)\\.sql$", "status": 404 },
+    { "src": "/app/(.*)", "status": 404 },
+    { "src": "/public/(.*)", "status": 404 },
+    { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ]
+}
